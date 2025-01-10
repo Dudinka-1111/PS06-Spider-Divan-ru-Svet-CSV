@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Firefox()
 url = "https://www.divan.ru/perm/category/lyustry"
 driver.get(url)
-time.sleep(3)
+time.sleep(20)
 
 lyustries = driver.find_elements(By.CLASS_NAME, 'LlPhw')
 
@@ -14,7 +14,7 @@ parsed_data = []
 
 for lyustry in lyustries:
     try:
-        name = lyustry.find_element(By.CSS_SELECTOR, 'span.name').text
+        name = lyustry.find_element(By.CSS_SELECTOR, 'span[itemprop="name"]').text
         price = lyustry.find_element(By.CSS_SELECTOR, 'span.ui-LD-ZU').text
         url = lyustry.find_element(By.CSS_SELECTOR, 'a.ui-GPFV8').get_attribute('href')
 
